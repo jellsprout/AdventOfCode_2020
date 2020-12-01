@@ -1,10 +1,10 @@
-def find_sum(numbers, expected_sum, total_entries=2):
+def find_sum_components(numbers, expected_sum, total_entries=2):
     numbers = sorted(numbers)
     indices = list(range(total_entries))
     trial_numbers = list(numbers[i] for i in indices)
     trial_sum = sum(trial_numbers)
     while trial_sum != expected_sum:
-        if trial_sum < 2020:
+        if trial_sum < expected_sum:
             indices[-1] += 1
         else:
             for j in range(total_entries):
