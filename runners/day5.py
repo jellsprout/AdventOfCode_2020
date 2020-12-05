@@ -15,6 +15,6 @@ def execute_part(part):
 
         def compare_ids(curent_index):
             current_boarding_pass = BoardingPassScanner(input_text[curent_index])
-            return (curent_index + lowest_id) - current_boarding_pass.get_seat_id()
+            return current_boarding_pass.get_seat_id() - (curent_index + lowest_id)
 
         return scripts.basic.binary_search(0, len(input_text), compare_ids) + lowest_id + 1
