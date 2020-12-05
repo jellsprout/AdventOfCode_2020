@@ -1,4 +1,5 @@
 import tools.common
+import scripts.basic
 from scripts.boarding_pass_scanner import BoardingPassScanner
 
 
@@ -10,9 +11,10 @@ def execute_part(part):
         return boarding_pass.get_seat_id()
     if part == 2:
         boarding_pass = BoardingPassScanner(input_text[0])
-        current_id = 0
-        for boarding_pass_string in input_text:
-            boarding_pass = BoardingPassScanner(boarding_pass_string)
-            old_id, current_id = current_id, boarding_pass.get_seat_id()
-            if current_id-old_id == 2:
-                return old_id + 1
+        lowest_id = boarding_pass.get_seat_id()
+
+        def compare_ids(curent_index):
+            current_boarding_pass = BoardingPassScanner(input_text[curent_index])
+            return (curent_index + lowest_id) - current_boarding_pass.get_seat_id()
+
+        return scripts.basic.binary_search(0, len(input_text), compare_ids) + lowest_id + 1

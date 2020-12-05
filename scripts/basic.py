@@ -22,3 +22,17 @@ def get_product(list_of_numbers):
     for x in list_of_numbers:
         product *= x
     return product
+
+
+def binary_search(min_input, max_input, func):
+    current_input = None
+    while min_input != max_input:
+        current_input = int((min_input + max_input)/2)
+        if func(current_input) < 0:
+            max_input = current_input
+        else:
+            if max_input - min_input != 1:
+                min_input = current_input
+            else:
+                return min_input
+    return current_input
