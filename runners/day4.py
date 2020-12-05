@@ -8,10 +8,8 @@ def load_input_overwrite(file):
     return output
 
 
-tools.common.load_input = load_input_overwrite
-
-
 def execute_part(part):
+    tools.common.load_input = load_input_overwrite
     input_text = tools.common.get_input(4, 1)
     if part == 1:
         total_valid_passports = 0
